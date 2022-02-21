@@ -1,0 +1,439 @@
+*{
+	direction: rtl;
+	font-family: tahoma !important;
+	
+}
+body{
+	background: white url(images/bg.jpg) repeat-x;
+	margin: 0;
+	padding: 0;
+}
+div#outerDiv{
+	width: 975px;
+	margin: 0 auto;
+	position: relative;
+	
+	
+	
+}
+div#outerDiv #headerDiv{
+	position: relative;
+	width: 975px;
+	top: 30px;
+	background: transparent url(images/header_bg.gif) repeat-x;
+	
+	
+}
+.logo{
+	margin: 10px;
+}
+/*=== MainMenu ===*/
+
+div#headerDiv ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	list-style-image: url(images/menu-sp.gif);
+	direction: rtl;
+	
+}
+div#headerDiv ul li{
+	float: right;
+	text-decoration: none;
+	margin: 0 20px 0 0;
+	display: block;
+	padding: 0;
+	width: 100px;
+	text-align: center;
+	line-height: 2em;
+	
+	
+	
+}
+div#headerDiv ul li a:link, div#headerDiv ul li a:visited{
+	text-decoration: none;
+	background:  url(images/menu-sp.gif) no-repeat top left;
+	color: white;
+	font: bold 12px arial ;
+	display: block;
+	line-height: 3em;
+	padding: 0  0 0 15px;
+	
+}
+
+div#headerDiv ul li a:hover, div#headerDiv ul li a:active{
+	
+	color: black;
+	
+	
+	
+}
+/*=== Mid Banner ===*/
+div#midBanner{
+position: relative;
+	background-color:#f5fadd;
+	width: 975px;
+	height: 40px;
+	top: 30px;
+	margin: 0px auto;
+	padding: 0;
+	border-bottom: 1px dotted #e6e6e6;
+}
+div#midBanner p{
+	
+	
+	text-align: center;
+	
+	font: normal 12px tahoma;
+}
+
+.midMenu{
+	float: left;
+	width: 33%;
+	text-align: right;
+	
+	padding:0;
+	margin: 0;
+	
+}
+
+/*=== Main Div ===*/
+div#mainDiv{
+position: relative;
+	width: 975px;
+	margin: 0 auto;
+	background-color: white;
+	min-height: 300px;
+	top: 50px;
+	
+}
+/*div#mainDiv div{
+	float: left;
+	width: 300px;
+	margin: 0 10px 0 10px;
+	border: 2px dashed blue;
+
+}*/
+div#mainDiv #leftBarDiv{
+	float: left;
+	width: 185px;
+	margin: 0 10px 0 0;
+	
+
+}
+div#mainDiv #ContentDiv{
+	float: left;
+	width: 555px;
+	margin: 0 2px 0 2px;
+/*	border: 1px dashed gray;*/
+	min-height: 400px;
+	padding: 10px;
+
+}
+
+div#mainDiv #ContentDivAdmin{
+	float: left;
+	width: 750px;
+	margin: 0 2px 0 2px;
+/*	border: 1px dashed gray;*/
+	min-height: 400px;
+	padding: 10px;
+
+}
+div#mainDiv #rightBarDiv{
+	float: right;
+	width: 185px;
+	margin: 0 0 0 10px;
+	
+
+}
+.cnt{
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	
+	
+}
+.cntHead{
+	width: 182px;
+	height: 25px;
+	background: #78b4cd url(images/theader.gif) repeat-x;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	/*border: 1px dashed red;*/
+	
+}
+.cntHead p{font: bold 12px tahoma; line-height: 2em; color: white;}
+.cntBody{
+	border: 1px solid #e6e6e6;
+	
+	width: 180px;
+	
+	background-color: white;
+	margin: 0;
+	padding: 0;
+	
+}
+.cntBody ul{
+	list-style: none;
+	list-style-image: url(images/arrowrtl.gif);
+	padding: 0;
+	margin: 20px;
+}
+
+.cntBody ul li{
+	text-decoration: none;
+	padding: 0;
+	margin: 0;
+}
+.cntBody ul li a:link, .cntBody ul li a:visited{
+	/*background:transparent url(images/arrow.gif) no-repeat scroll 0 4px ;*/
+	font: normal 12px arial;
+	color: black;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-style:normal;
+	font-variant:normal;
+	
+	line-height: 2em;
+	padding:0 0 0 9px;
+	text-decoration:none;
+	
+	
+}
+.cntBody ul li a:hover, .cntBody ul li a:active{
+	text-decoration: underline;
+}
+/*=== Main Div ===
+=== MainContent */
+.contentCells{
+	width: 100%;
+	display: block;
+	/*border: 1px solid red;*/
+}
+div#ContentDiv hr{width: 500px; color: gray; margin-bottom: 30px;  }
+div.productList{
+	width: 170px;
+	float: right;
+	
+	margin: 10px;
+	margin-left:0;
+	text-align:center;
+}
+
+div.productList a:link, div.productList a:visited {
+	font-size: 12px;
+	color: gray;
+	text-decoration: none;
+}
+div.productList a:hover, div.productList a:active{
+	
+	
+	border-bottom: 1px dashed gray;
+	
+}
+
+/*=== Footer ===*/
+div#footerDiv{
+	width: 100%;
+	background: white url(images/footer_bg.gif) repeat-x bottom right;
+	text-align: center;
+	height: 120px;
+	
+	padding: 0;
+	position: relative;
+	vertical-align: bottom;
+	
+	/*border-top: 1px groove black;*/
+	
+}
+#footerDiv hr{
+
+	width: 600px;
+}
+div#footerDiv p{
+	font-size: 12px;
+	vertical-align: bottom;
+	
+}
+/*===== Misc Rules =====*/
+.clear{
+	clear: both;
+}
+h1{ font-size: 14px; font-weight: bold;}
+input{
+	margin-bottom: 10px;
+}
+
+/*============================== SHOW PRODUCT PAGE STYLES ===============================*/
+.productImage{
+	vertical-align: text-top;
+	clear: none;
+}
+.productDetails{
+	font-size: 12px;
+	color: gray;
+width: 100%;	
+text-align: justify;
+}
+.showProduct{
+	width: 50%;
+	float: right;
+}
+.addToCart{
+	float: left;
+	width: 145px;
+	height: 100px;
+	border: 1px solid #e6e6e6;
+	background-color: #f8f8f8;
+	text-align: center;
+	line-height: 2em;
+	
+}
+.addToCart span{
+	font-size:10px;
+	
+}
+span.Title{
+	font-size: 12px;
+	font-weight: bold;
+	color: gray;
+}
+span.Details{
+	font-size: 12px;
+	margin-right: 10px;
+	color: gray;
+}
+
+/*=== Product Menu Styles ===*/
+.divProductDetails{
+	width: 100%;
+	background-color: #f8f8f8;
+	height: auto;
+	min-height: 200px;
+	border-bottom: 1px solid gray;
+	border-top: 1px solid gray;
+	text-align:center;
+}
+.divProductDetailsMenu{
+	background: transparent url(images/header_bg.gif) repeat-x;
+	height: 39px;
+	
+}
+.divProductDetailsMenu ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	
+	direction: rtl;
+	
+}
+.divProductDetailsMenu ul li{
+	float: right;
+	text-decoration: none;
+	margin: 0 20px 0 0;
+	display: block;
+	padding: 0;
+	width: 150px;
+	text-align: center;
+	line-height: 2em;
+	
+	
+	
+}
+.divProductDetailsMenu ul li a:link, .divProductDetailsMenu ul li a:visited{
+	text-decoration: none;
+	background:  url(images/menu-sp.gif) no-repeat top right;
+	color: white;
+	font: bold 12px arial ;
+	display: block;
+	line-height: 3em;
+	padding: 0;
+	direction: rtl;
+	text-align: center;
+	
+}
+
+.divProductDetailsMenu ul li a:hover, .divProductDetailsMenu ul li a:active{
+	color: black;
+}
+.ProductMenuContent{
+	width: 100%;
+	text-align: right;
+}
+.ProductMenuContent p{
+	font-size: 12px;
+	color: gray;
+	margin: 10px;
+
+}
+
+/*============================== SIGN UP FORM STYLES ===============================*/
+
+
+
+fieldset{
+border:1px solid #D6D6D6;
+margin:10px;
+padding:23px;
+width: 80%;
+
+}
+fieldset#mainField{
+border:1px solid #D6D6D6;
+margin:10px;
+padding:13px;
+width: 90%;
+
+}
+legend{
+background:#F3F3F7 none repeat scroll 0 0;
+color:#4E6A96;
+font:bold 12px tahoma;
+
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+margin-bottom: 10px;
+
+line-height:normal;
+padding:4px 6px;
+}
+/*label {
+line-height:23px;
+padding:0.2em;
+width:9em;
+
+}*/
+label.signUpLabel{
+/*	margin:0.5em 0.3em;
+	
+	color: red;
+	width:9em;*/
+	font-size: 12px;
+	margin-left: 10px;
+}
+input{
+	background-color: #f7f6c9; /*#fbfada;*/
+	border: none;
+	height: 1.5em;
+	/*width: 100%;*/
+	
+}
+#btnSubmit{
+	border: none;
+	width:66px;
+	height:28px;
+}
+table#tblSingUpForm{
+	width: 90%;
+	/*border: 1px dashed red;*/
+	margin: 10px 10px 0 0;
+}
+span.alert{
+	font-size: 10px;
+	color: red;
+}
+

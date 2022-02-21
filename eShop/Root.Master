@@ -1,0 +1,211 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Root.master.cs" Inherits="eShop.Root" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<%@ Register Assembly="eShop" Namespace="ThemeSwitcher_CS" TagPrefix="cc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+    </style>
+    <link runat="server" href="~/Scripts/css/jquery.lightbox-0.5.css" rel="stylesheet"
+        type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+        <Scripts>
+            <asp:ScriptReference Path="~/Scripts/jquery-1.4.1.min.js" />
+            <asp:ScriptReference Path="~/Scripts/jquery.lightbox-0.5.min.js" />
+            <asp:ScriptReference Path="~/Scripts/tiny_mce/tiny_mce.js" />
+        </Scripts>
+    </asp:ScriptManager>
+    <div id="outerDiv">
+        <p class="clear">
+        </p>
+        <div id="headerDiv">
+            <ul>
+                <li>
+                    <asp:HyperLink ID="hlDefault" runat="server" NavigateUrl="~/Default.aspx">صفحه اصلی</asp:HyperLink>
+                </li>
+                <asp:LoginView ID="lvUserOptions" runat="server">
+                    <AnonymousTemplate>
+                        <li>
+                            <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="~/Login.aspx">ورود</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlRegister" runat="server" NavigateUrl="~/Register.aspx">ثبت نام</asp:HyperLink>
+                        </li>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <li>
+                            <asp:HyperLink ID="hlCart" runat="server" NavigateUrl="~/Customers/ShowCart.aspx">سبد خرید</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlOrders" runat="server" NavigateUrl="~/Customers/ShowOrders.aspx">سفارشات خرید</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lbLogout" runat="server" CausesValidation="False" OnClick="lbLogout_Click">خروج</asp:LinkButton>
+                        </li>
+                    </LoggedInTemplate>
+                    <RoleGroups>
+                        <asp:RoleGroup Roles="Admin">
+                            <ContentTemplate>
+                                <li>
+                                    <asp:HyperLink ID="hlAdminArea" runat="server" NavigateUrl="~/Admin/Default.aspx">بخش مدیران</asp:HyperLink>
+                                </li>
+                                <li>
+                                    <asp:HyperLink ID="hlCart" runat="server" NavigateUrl="~/Customers/ShowCart.aspx">سبد خرید</asp:HyperLink>
+                                </li>
+                                <li>
+                                    <asp:HyperLink ID="hlOrders" runat="server" NavigateUrl="~/Customers/ShowOrders.aspx">سفارشات خرید</asp:HyperLink>
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="lbLogout" runat="server" CausesValidation="False" OnClick="lbLogout_Click">خروج</asp:LinkButton>
+                                </li>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                    </RoleGroups>
+                </asp:LoginView>
+            </ul>
+            <p class="clear">
+            </p>
+        </div>
+        <div id="mainDiv">
+            <div id="leftBarDiv">
+                <div class="cnt">
+                    <div class="cntHead">
+                        <p>
+                            صفحات سایت</p>
+                    </div>
+                    <div class="cntBody">
+                        <asp:SqlDataSource ID="dsPages" runat="server" ConnectionString="<%$ ConnectionStrings:eShop_16 %>"
+                            SelectCommand="sp_Pages_SelectAll" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                        <asp:Repeater ID="rptPages" runat="server" DataSourceID="dsPages">
+                            <HeaderTemplate>
+                                <ul>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li>
+                                    <asp:HyperLink ID="hlPage" runat="server" Text='<%# Eval("PageTitle") %>' NavigateUrl='<%# Eval("PageID","~/ShowPage.aspx?PageID={0}") %>'></asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </ul>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </div>
+                </div>
+                <div class="cnt">
+                    <asp:SqlDataSource ID="dsCartContents" runat="server" ConnectionString="<%$ ConnectionStrings:eShop_16 %>"
+                        SelectCommand="sp_Orders_GetUserCartContents" SelectCommandType="StoredProcedure">
+                        <SelectParameters>
+                            <asp:Parameter Name="UserID" Type="Int32" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:LoginView ID="lvCartContents" runat="server">
+                        <LoggedInTemplate>
+                            <div class="cntHead">
+                                <p>
+                                    محتویات سبد خرید شما</p>
+                            </div>
+                            <div class="cntBody">
+                                <asp:GridView ID="grdCartContents" runat="server" AutoGenerateColumns="False" CellPadding="4"
+                                    DataSourceID="dsCartContents" ForeColor="#333333" GridLines="None" Width="100%">
+                                    <AlternatingRowStyle BackColor="White" />
+                                    <Columns>
+                                        <asp:BoundField DataField="ProductTitle" HeaderText="نام کالا" SortExpression="ProductTitle" />
+                                        <asp:BoundField DataField="ProductPrice" HeaderText="قیمت" SortExpression="ProductPrice" />
+                                        <asp:BoundField DataField="ProductCount" HeaderText="تعداد" SortExpression="ProductCount" />
+                                    </Columns>
+                                    <EditRowStyle BackColor="#2461BF" />
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                    <RowStyle BackColor="#EFF3FB" />
+                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                </asp:GridView>
+                                <asp:HyperLink ID="hlCart" runat="server" NavigateUrl="~/Customers/ShowCart.aspx">مشاهده جزئیات کامل سبد خرید</asp:HyperLink>
+                            </div>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+            <div id="ContentDiv">
+                <asp:ContentPlaceHolder ID="cphMain" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="rightBarDiv">
+                <div class="cnt">
+                    <div class="cntHead">
+                        <p>
+                            گروه های محصولات</p>
+                    </div>
+                    <div class="cntBody">
+                        <asp:SqlDataSource ID="dsProductGroups" runat="server" ConnectionString="<%$ ConnectionStrings:eShop_16 %>"
+                            SelectCommand="sp_ProductGroups_SelectAll" SelectCommandType="StoredProcedure">
+                        </asp:SqlDataSource>
+<%--                        <asp:Repeater ID="rptProductGroups" runat="server" DataSourceID="dsProductGroups">
+                            <HeaderTemplate>
+                                <ul>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li>
+                                    <asp:HyperLink ID="hlProductGroup" runat="server" Text='<%# Eval("ProductGroupTitle") %>'
+                                        NavigateUrl='<%# Eval("ProductGroupID","~/ShowProductGroup.aspx?ProductGroupID={0}") %>'></asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </ul>
+                            </FooterTemplate>
+                        </asp:Repeater>--%>
+                        <telerik:RadMenu ID="mnuProductGroups" runat="server" 
+                            DataFieldID="ProductGroupID" DataFieldParentID="ParentID" 
+                            DataNavigateUrlField="ProductGroupUrl" DataSourceID="dsProductGroups" 
+                            DataTextField="ProductGroupTitle" DataValueField="ProductGroupID" 
+                            Flow="Vertical" Skin="Outlook" style="top: 0px; right: 0px" Width="100%">
+                        </telerik:RadMenu>
+
+                        <br />
+                        <telerik:RadTreeView ID="tvGroups" runat="server" DataFieldID="ProductGroupID" 
+                            DataFieldParentID="ParentID" DataNavigateUrlField="ProductGroupUrl" 
+                            DataSourceID="dsProductGroups" DataTextField="ProductGroupTitle" 
+                            DataValueField="ProductGroupID">
+                        </telerik:RadTreeView>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="clear">
+        </p>
+        <div id="footerDiv">
+            محل قرار گرفتن کپی رایت و ...
+            <br />
+            <br />
+            <asp:Label ID="lblUsername" runat="server" Font-Bold="True"></asp:Label>
+            &nbsp;گرامی، خوش آمدید.
+            <br />
+            هم اکنون
+            <asp:Label ID="lblDateTime" runat="server"></asp:Label>
+            می باشد.
+            <br />
+            انتخاب تم سایت:
+            <cc1:ThemeSwitcher ID="ThemeSwitcher1" runat="server">
+            </cc1:ThemeSwitcher>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

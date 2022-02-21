@@ -1,0 +1,17 @@
+﻿body 
+{
+    direction: rtl;
+    font-family: Tahoma;
+    font-size: 10pt;
+}
+
+a,input,select,textarea
+{
+    font-family: Tahoma;
+    font-size: 10pt;
+}
+
+a
+{
+    text-decoration: none;
+}
